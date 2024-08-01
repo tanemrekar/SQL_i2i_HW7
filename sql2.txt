@@ -1,0 +1,69 @@
+example 1
+SELECT employee_id, first_name, last_name, trunc(months_between(SYSDATE, hire_date)) AS numofmonth  FROM hr.employees;
+
+example 2
+
+SELECT DISTINCT JOB_ID, 
+DECODE(JOB_ID, 
+'AD_PRES', 'A',
+          'ST_MAN', 'B',
+                  'IT_PROG', 'C',
+                  'SA_REP', 'D',
+                   'ST_CLERK', 'E',
+                   '0') AS GRADE
+FROM HR.EMPLOYEES
+ORDER BY GRADE;
+
+example 3
+
+SELECT DISTINCT JOB_ID,
+    CASE
+        WHEN JOB_ID = 'AD_PRES' THEN 'A'
+        WHEN JOB_ID = 'ST_MAN' THEN 'B'
+        WHEN JOB_ID = 'IT_PROG' THEN 'C'
+        WHEN JOB_ID = 'SA_REP' THEN 'D'
+        WHEN JOB_ID = 'ST_CLERK' THEN 'E'
+        ELSE '0'
+    END AS JOB_CODE
+FROM HR.EMPLOYEES
+ORDER BY JOB_ID;
+
+example 4
+
+select distinct phone_number , last_name from hr.employees 
+where department_id in (
+    select department_id from hr.employees
+    where last_name like '%i%'
+     );
+
+example 5
+
+create table my_emp_table (
+    ID NUMBER,
+    LAST_NAME VARCHAR2(30),
+    FIRST_NAME VARCHAR2(30),
+    SALARY NUMBER );
+
+
+
+
+INSERT INTO my_emp_table (ID, LAST_NAME, FIRST_NAME, SALARY) VALUES (1, 'Black', 'John', 1100);
+INSERT INTO my_emp_table (ID, LAST_NAME, FIRST_NAME, SALARY) VALUES (2, 'White', 'Kent', 1300);
+INSERT INTO my_emp_table (ID, LAST_NAME, FIRST_NAME, SALARY) VALUES (3, 'Orange', 'David', 1300);
+INSERT INTO my_emp_table (ID, LAST_NAME, FIRST_NAME, SALARY) VALUES (4, 'Pink', 'Alissa', 1900);
+
+
+
+ 
+Update my_emp_table set  salary = salary * 1.10;
+
+
+
+ 
+delete * from my_emp_table where FIRST_NAME = 'David';
+
+
+
+ 
+TRUNCATE TABLE my_emp_table;
+

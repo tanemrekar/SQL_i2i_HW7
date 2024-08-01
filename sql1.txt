@@ -1,0 +1,34 @@
+--question1
+select employee_id , first_name , last_name , DEPARTMENT_NAME from hr.employees  emp , hr.DEPARTMENTS  dp where emp.DEPARTMENT_ID = dp.DEPARTMENT_ID;
+
+--question2
+select employee_id  , manager_id from hr.employees
+
+--question3
+SELECT substr(phone_number, 1, 3) AS code, COUNT(substr(phone_number, 1, 3)) AS total
+FROM hr.employees
+GROUP BY substr(phone_number, 1, 3);
+
+--question4
+--question4
+CREATE TABLE emp AS
+SELECT * FROM hr.employees;
+
+insert into emp(employee_id, first_name, last_name, email, phone_number, hire_date, job_id, salary, commission_pct, manager_id, department_id)
+ values ( 1000, 'tanemre' , 'kar' , 'tanemre@com',29586 , ',08-apr-02' , 'FI_ACCOUNT' , 100000, 0 , 101 , 44 );
+
+-- adding new row  after query
+select * from emp
+
+Delete from emp 
+where employee_id = 1000;
+
+select * from emp;
+
+drop table emp;
+select * from emp; -- system say not exist emp table
+
+
+
+--question5
+select rpad(first_name,4,'*')  as firstname , rpad(last_name,4,'*') as lastname   from hr.employees;
